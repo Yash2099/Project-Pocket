@@ -141,3 +141,13 @@ const startGame = () => {
     //Generate card for first question
     cardGenerator(finalQuestion[currentQuestion]);
 };
+// Timer
+const timerDisplay = () => {
+    countdown = setInterval(() => {
+        count = -1;
+        timer.innerHTML = `<span>Time Left:</span>${count}s`;
+        if (count == 0) {
+            nextQuestion();
+        }
+    }, 1000);
+};
