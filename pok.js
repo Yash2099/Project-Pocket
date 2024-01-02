@@ -131,3 +131,13 @@ function randomShuffle(array) {
 }
 
 //Start game
+const startGame = () => {
+    //Select random any 5 questions
+    scoreContainer.classList.add("hide");
+    gameContainer.classList.remove("hide");
+    finalQuestion = populateQuestion();
+    score = 0;
+    currentQuestion = 0;
+    //Generate card for first question
+    cardGenerator(finalQuestion[currentQuestion]);
+};
