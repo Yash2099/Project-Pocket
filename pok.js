@@ -151,3 +151,18 @@ const timerDisplay = () => {
         }
     }, 1000);
 };
+// create options
+const populateOptions = (correct_option) => {
+    let arr = [];
+    arr.push(correct_option);
+    let optionsCount = 1;
+    while (optionsCount < 4) {
+        let randomvalue = randomValuegenerator
+            (optionsArrray);
+        if (!arr.includes(randomvalue)) {
+            arr.push(randomvalue);
+            optionsCount += 1;
+        }
+    }
+    return arr;
+};
