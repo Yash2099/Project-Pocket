@@ -1,4 +1,3 @@
-// Initial Refrences
 
 //Question or Images
 const questions = [{
@@ -151,3 +150,56 @@ const timerDisplay = () => {
         }
     }, 1000);
 };
+
+// create options
+const populateOptions = (correct_option) => {
+    let arr = [];
+    arr.push(correct_option);
+    let optionsCount = 1;
+    while (optionsCount < 4) {
+        let randomvalue = randomValuegenerator
+            (optionsArrray);
+        if (!arr.includes(randomvalue)) {
+            arr.push(randomvalue);
+            optionsCount += 1;
+        }
+    }
+    return arr;
+};
+//Card UI
+const cardGenerator = (cardObject) => {
+    const{image , correct_option} = cardObject;
+    let options = randomShuffle(populateOptions(correct_option));
+    container.innerHTML = `<div class="quiz>
+    <p class="num>
+    ${currentQuestion+1}/5
+    </p>
+    <div class="questions">
+    <button class = "option" onclick="checker(event)">$
+    {options[0]}
+    </button>
+    <button class = "option" onclick="checker(event)">$
+    {options[1]}
+    </button>
+    <button class = "option" onclick="checker(event)">$
+    {options[2]}
+    </button>
+    <button class = "option" onclick="checker(event)">$
+    {options[3]}
+    </button>
+    </div>
+
+
+    <div class="next-btn-div">
+    <button class = "next-btn" onclick="nextQuestion
+    (event)">Next</button>
+    </div>
+
+    </div>`;
+    //For timer
+    count = 11;
+    clearInterval(countdown);
+    //Display Timer
+    timerDisplay();
+};
+startButton.addEventListener("click",startGame);
