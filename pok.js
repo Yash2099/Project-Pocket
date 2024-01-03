@@ -111,7 +111,7 @@ const optionsArray = [
     "Exeggcute"
 ];
 const container = document.querySelector(".container");
-const gameContainer = document.querySelector(".gane-container");
+const gameContainer = document.querySelector(".game-container");
 const startButton = document.getElementById("start");
 const scoreContainer = document.querySelector(".score-container");
 const userScore = document.getElementById("user-score");
@@ -144,7 +144,7 @@ const startGame = () => {
 // Timer
 const timerDisplay = () => {
     countdown = setInterval(() => {
-        count = -1;
+        count--;
         timer.innerHTML = `<span>Time Left:</span>${count}s`;
         if (count == 0) {
             nextQuestion();
