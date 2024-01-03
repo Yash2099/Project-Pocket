@@ -166,3 +166,40 @@ const populateOptions = (correct_option) => {
     }
     return arr;
 };
+//Card UI
+const cardGenerator = (cardObject) => {
+    const{image , correct_option} = cardObject;
+    let options = randomShuffle(populateOptions(correct_option));
+    container.innerHTML = `<div class="quiz>
+    <p class="num>
+    ${currentQuestion+1}/5
+    </p>
+    <div class="questions">
+    <button class = "option" onclick="checker(event)">$
+    {options[0]}
+    </button>
+    <button class = "option" onclick="checker(event)">$
+    {options[1]}
+    </button>
+    <button class = "option" onclick="checker(event)">$
+    {options[2]}
+    </button>
+    <button class = "option" onclick="checker(event)">$
+    {options[3]}
+    </button>
+    </div>
+
+
+    <div class="next-btn-div">
+    <button class = "next-btn" onclick="nextQuestion
+    (event)">Next</button>
+    </div>
+
+    </div>`;
+    //For timer
+    count = 11;
+    clearInterval(countdown);
+    //Display Timer
+    timerDisplay();
+};
+startButton.addEventListener("click",startGame);
