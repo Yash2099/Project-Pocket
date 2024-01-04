@@ -1,5 +1,6 @@
 //Question or Images
-const questions = [{
+const questions = [
+    {
     image: "Alakazam.jpg",
     correct_option: "Alakazam",
 },
@@ -119,14 +120,14 @@ let score, currentQuestion, finalQuestion;
 let countdown, count = 11;
 
 //random value from array
-function randomValuegenerator(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
+const randomValuegenerator = (array) =>
+     array[Math.floor(Math.random() * array.length)];
+
 
 // Random shuffle array
-function randomShuffle(array) {
-    return array.sort(() => 0.5 - Math.random());
-}
+const randomShuffle = (array) =>
+     array.sort(() => 0.5 - Math.random());
+
 
 //Start game
 const startGame = () => {
@@ -145,18 +146,19 @@ const timerDisplay = () => {
         count--;
         timer.innerHTML = `<span>Time Left:</span>${count}s`;
         if (count == 0) {
+            clearInterval(countdown);
             nextQuestion();
         }
     }, 1000);
 };
+
 // create options
 const populateOptions = (correct_option) => {
     let arr = [];
     arr.push(correct_option);
     let optionsCount = 1;
     while (optionsCount < 4) {
-        let randomvalue = randomValuegenerator
-            (optionsArrray);
+        let randomvalue = randomValuegenerator(optionsArray);
         if (!arr.includes(randomvalue)) {
             arr.push(randomvalue);
             optionsCount += 1;
@@ -185,38 +187,36 @@ const populateQuestion = () =>{
 };
 //Card UI
 const cardGenerator = (cardObject) => {
-    const{image , correct_option} = cardObject;
-    let options = randomShuffle(populateOptions(correct_option));
-    container.innerHTML = `<div class="quiz>
-    <p class="num>
-    ${currentQuestion+1}/5
-    </p>
-    <div class="questions">
-    <button class = "option" onclick="checker(event)">$
-    {options[0]}
+  const { image, correct_option } = cardObject;
+  let options = randomShuffle(populateOptions(correct_option));
+  container.innerHTML = `<div class="quiz">
+  <p class="num">
+  ${currentQuestion + 1}/5
+  </p>
+  <div class="questions">
+    <img class="pokemon-image" src="${image}"/>
+  </div>
+    <div class="options">
+    <button class="option" onclick="checker(event)">${options[0]}
     </button>
-    <button class = "option" onclick="checker(event)">$
-    {options[1]}
+    <button class="option" onclick="checker(event)">${options[1]}
     </button>
-    <button class = "option" onclick="checker(event)">$
-    {options[2]}
+    <button class="option" onclick="checker(event)">${options[2]}
     </button>
-    <button class = "option" onclick="checker(event)">$
-    {options[3]}
+    <button class="option" onclick="checker(event)">${options[3]}
     </button>
     </div>
 
-
-    <div class="next-btn-div">
-    <button class = "next-btn" onclick="nextQuestion
-    (event)">Next</button>
+    <div class="nxt-btn-div">
+        <button class="next-btn" onclick="nextQuestion(event)">Next</button>
     </div>
 
-    </div>`;
-    //For timer
-    count = 11;
-    clearInterval(countdown);
-    //Display Timer
-    timerDisplay();
+  </div>`;
+  //For timer
+  count = 11;
+  clearInterval(countdown);
+  //Display timer
+  timerDisplay();
 };
+
 startButton.addEventListener("click", startGame);
