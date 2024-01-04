@@ -166,6 +166,25 @@ const populateOptions = (correct_option) => {
     }
     return arr;
 };
+// Choose random questions
+const populateQuestion = () =>{
+    let questionCount=0;
+    let chosenObject = [];
+    let questionBatch = [];
+    // 5 Questions 
+    while(questionCount<5)
+    {
+        let randomvalue = randomValuegenerator(questions);
+        let index = questions.indexOf(randomvalue);
+        if (!chosenObject.includes(index)) 
+        {
+           questionBatch.push(randomvalue);
+           chosenObject.push(index);
+           questionCount+=1; 
+        }
+    }
+    return questionBatch;
+};
 //Card UI
 const cardGenerator = (cardObject) => {
     const{image , correct_option} = cardObject;
@@ -202,4 +221,7 @@ const cardGenerator = (cardObject) => {
     //Display Timer
     timerDisplay();
 };
-startButton.addEventListener("click",startGame);
+document.getElementById("startButton").addEventListener("click", startGame);
+function startGame() {
+    console.log("Game started!");
+   }
