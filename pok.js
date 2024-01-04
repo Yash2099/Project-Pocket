@@ -219,7 +219,4 @@ const cardGenerator = (cardObject) => {
     //Display Timer
     timerDisplay();
 };
-document.getElementById("startButton").addEventListener("click", startGame);
-function startGame() {
-    console.log("Game started!");
-   }
+startButton.addEventListener("click", startGame);
