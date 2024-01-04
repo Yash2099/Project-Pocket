@@ -1,5 +1,3 @@
-// Initial Refrences
-
 //Question or Images
 const questions = [{
     image: "Alakazam.jpg",
