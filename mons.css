@@ -28,6 +28,7 @@ body {
     border: 0.2em solid #090029;
     border-radius: 50%;
     cursor: pointer;
+    margin-top: 50%;
 }
 
 .game-container {

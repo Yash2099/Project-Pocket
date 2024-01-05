@@ -186,8 +186,44 @@ const populateQuestion = () => {
 };
 
 //check slected answer
-
-
+const checker = (e) => {
+    let userSolution = e.target.innerText;
+    let options = document.querySelectorAll(".option");
+    if(userSolution === finalQuestion[currentQuestion].
+        correct_option){
+            e.target.classList.add("correct");
+            score++;
+        }
+        else{
+            e.target.classList.add("incorrect");
+            options.forEach((element)=>{
+                if(element.innerText==finalQuestion
+                [currentQuestion].correct_option){
+                    element.classList.add("correct");
+                }
+            });
+        }
+        clearInterval(countdown);
+        //disable all options
+        options.forEach((element) => {
+            element.disabled = true;
+        })
+};
+// Next Question
+const nextQuestion = (e)=>{
+    //increment currentQuestion
+    currentQuestion+=1;
+    if(currentQuestion == finalQuestion.length){
+        gameContainer.classList.add("hide");
+        scoreContainer.classList.remove("hide");
+        startButton.innerText = `Restart`;
+        userScore.innerHTML = "Your score is "+score+" out of "+currentQuestion;
+        clearInterval(countdown);
+        }
+        else{
+            cardGenerator(finalQuestion[currentQuestion]);
+        }
+};
 
 
 //Card UI
